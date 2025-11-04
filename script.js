@@ -136,14 +136,14 @@ document.addEventListener('DOMContentLoaded', () => {
         setSubmitting(true);
         const emailSubject = "New Consultation Request from Shark Velocity";
         const emailBody = `
-Hey [Company Name],
+Hello Dear,
 We have received a new client consultation request:
 Name: ${data.user_name}
 Email: ${data.user_email}
 Phone Number: ${data.user_phone}
 Message: ${data.user_message || 'N/A'}
 Thank You
-Shark Velocity Website
+Pioneering Marketing
         `;
         const templateParams = {
             to_email: YOUR_CLIENT_EMAIL,
