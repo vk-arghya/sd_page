@@ -1,0 +1,2155 @@
+/* Color Palette based on the second image */
+:root {
+    --primary-color: #00bf82; /* Bright Green/Teal (Main Highlight) */
+    --secondary-color: #009968; /* Darker Green for hover/contrast */
+    --accent-dark-bg: #e76f51; /* Dark Orange/Red for highlight on dark background (from image) */
+    --text-dark: #333333;
+    --text-light: #ffffff;
+    --background-light: #f9f9f9;
+    --background-dark: #2a3a4c; /* Dark blue from the first image for the footer/bottom section */
+    --border-light: #dddddd;
+    --header-height: 110px; /* Combined height of top-bar and navbar */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    line-height: 1.6;
+    color: var(--text-dark);
+    padding-top: var(--header-height); 
+}
+
+/* --- Fixed Header Container --- */
+.header-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+/* --- Consultation Form Wrapper and Hover Effect --- */
+.consultation-wrapper {
+    position: relative;
+    margin-top: -30px; 
+}
+
+.consultation-form-container {
+    background-color: var(--text-light);
+    padding: 30px;
+    border-radius: 15px;
+    /* This is the default, resting shadow */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    /* Added a longer transition to make the deep shadow grow smoothly */
+    transition: box-shadow 0.5s ease-out, transform 0.5s ease-out;
+    position: relative; 
+    z-index: 5;
+}
+
+/* Form Hover Design (MODIFIED FOR DEEPER SHADOW) */
+.consultation-form-container:hover {
+    box-shadow: 0 50px 60px 5px rgba(0, 191, 130, 0.4); 
+    transform: translateY(-5px); /* Adds a subtle lift effect */
+}
+/* --- Top Bar (Always Visible) --- */
+.top-bar {
+    background: var(--primary-color); 
+    color: var(--text-light);
+    text-align: center;
+    padding: 8px 0;
+    font-size: 0.9em;
+}
+
+.top-bar a {
+    color: var(--text-light);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* --- Navbar --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: var(--text-light);
+}
+
+.logo img {
+    height: 50px; 
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+/* Hide mobile-only close button on desktop */
+.nav-close-btn-container {
+    display: none;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: bold; 
+    transition: color 0.3s;
+}
+
+/* Active and Hover State for Nav Links */
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary-color);
+}
+
+.contact-btn .phone-number {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.contact-btn .phone-number:hover {
+    background-color: var(--secondary-color);
+}
+
+.menu-toggle {
+    display: none; 
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: var(--text-dark);
+    z-index: 1002; /* Sit above content, below menu */
+}
+
+/* --- Corner Decoration (Mandala Placeholder) --- */
+.corner-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    border-radius: 0 0 100px 0;
+    background: var(--primary-color);
+    opacity: 0.1;
+    z-index: -1;
+}
+
+
+/* --- Hero Section --- */
+.hero-section {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 80px; 
+    padding: 60px 5% 100px;
+    background-color: var(--background-light);
+    position: relative;
+    overflow: visible; 
+    min-height: 80vh;
+}
+
+.hero-content {
+    max-width: 50%;
+    position: relative; 
+}
+
+.hero-content h1 {
+    font-size: 2.8em;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+/* BOLD and HIGHLIGHT for key phrases */
+.highlight-text {
+    font-weight: 900;
+    color: var(--primary-color);
+    display: inline-block;
+}
+
+.highlight-text-sub {
+    font-weight: 700;
+    color: var(--accent-dark-bg); 
+}
+
+.animated-underline-container {
+    display: inline-block;
+    position: relative;
+    width: fit-content; 
+}
+
+.animated-underline {
+    position: absolute;
+    bottom: -20px; 
+    left: 0;
+    width: 100%; 
+    height: 4px;
+    background-color: var(--primary-color);
+    animation: pulse-underline 2s infinite alternate ease-in-out;
+}
+
+@keyframes pulse-underline {
+    0% {
+        transform: scaleX(0.9);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
+
+
+/* --- Consultation Form Wrapper and Hover Effect --- */
+.consultation-wrapper {
+    position: relative;
+    margin-top: -30px; 
+}
+
+.consultation-form-container {
+    background-color: var(--text-light);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    transition: box-shadow 0.4s ease-in-out;
+    position: relative; 
+    z-index: 5;
+}
+
+.consultation-form-container:hover {
+    box-shadow: 0 15px 40px rgba(0, 191, 130, 0.3);
+}
+
+.consultation-form h3 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--text-dark);
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.consultation-form input,
+.consultation-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.consultation-form input:focus,
+.consultation-form textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.consultation-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.cta-button {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: var(--secondary-color);
+}
+
+.form-message {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+    display: none;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 15px;
+    font-size: 0.9em;
+}
+
+.form-footer a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.form-footer a i {
+    margin-right: 5px;
+    font-size: 1.2em;
+}
+
+/* --- Bottom Section (Services) --- */
+.bottom-section {
+    background-color: var(--background-dark); 
+    color: var(--text-light);
+    text-align: center;
+    padding: 100px 5%; 
+    position: relative;
+    overflow: hidden; /* This hides horizontal scroll overflow from view */
+    
+    /* Dotted background pattern */
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 0);
+    background-size: 20px 20px;
+    z-index: 1; 
+}
+
+/* ... (heading styles .bottom-section h2, etc. remain the same) ... */
+
+.bottom-section .highlight-text-orange {
+    color: var(--accent-dark-bg); /* Orange/Red color */
+    position: relative;
+    font-weight: 900;
+    padding-bottom: 5px; 
+    display: inline-block;
+}
+.bottom-section .highlight-text-orange::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -5px; 
+    transform: translateX(-50%);
+    width: 60%; 
+    height: 3px;
+    background-color: var(--text-light); 
+}
+
+/* MODIFIED: Styles for the single-line list */
+.services-list {
+    font-size: 1.2em;
+    font-weight: 500;
+    display: flex;
+    /* This forces it to a single line */
+    flex-wrap: nowrap; 
+    /* This allows horizontal scrolling on small screens */
+    overflow-x: auto; 
+    justify-content: center;
+    max-width: 100%; /* Use full width to allow scrolling */
+    margin: 0 auto;
+    gap: 0; /* Use padding for spacing, not gap */
+    
+    /* Small trick to hide scrollbar but keep functionality */
+    padding-bottom: 20px;
+    margin-bottom: -20px;
+}
+
+.services-list span {
+    padding: 0 2px; /* Space on sides of each item */
+    white-space: nowrap; /* Prevent text like "Social Media" from wrapping */
+    line-height: 1.8;
+}
+
+/* Styles for the separators */
+.services-list .separator {
+    display: inline-block; 
+    padding: 0; 
+    color: var(--accent-dark-bg); /* Orange/Red color for the "|" */
+}
+
+/* ==================================
+   MOBILE VIEW FIX for Services List
+   ================================== */
+
+@media (max-width: 768px) { 
+    /* Selects the services list inside the dark blue section */
+    .bottom-section .services-list {
+        /* This stacks the services vertically */
+        flex-direction: column; 
+        align-items: center; /* Center-aligns the text */
+        gap: 15px; /* Adds space between each service */
+        
+        /* This resets the scrolling behavior */
+        overflow-x: hidden; 
+        flex-wrap: nowrap; 
+        justify-content: center;
+        padding-bottom: 0; /* Reset padding */
+        margin-bottom: 0; /* Reset margin */
+    }
+    
+    /* This hides the "|" separators on mobile */
+    .bottom-section .services-list .separator {
+        display: none; 
+    }
+
+    .bottom-section .services-list span {
+        margin: 0; /* Resets any extra spacing */
+    }
+
+    /* Make heading a bit smaller on mobile */
+    .bottom-section h2 {
+        font-size: 1.8em;
+    }
+}
+
+.bottom-section h2 {
+    font-size: 2.2em;
+    font-weight: 700;
+    margin-bottom: 40px; 
+    line-height: 1.4;
+    padding: 0 15px;
+}
+
+.bottom-section .highlight-text-orange {
+    color: var(--accent-dark-bg); 
+    position: relative;
+    font-weight: 900;
+    padding-bottom: 5px; 
+    display: inline-block;
+}
+
+.bottom-section .highlight-text-orange::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 70%; 
+    height: 3px;
+    background-color: var(--accent-dark-bg);
+}
+
+.services-list {
+    font-size: 1.2em;
+    font-weight: 500;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.services-list span {
+    margin: 10px 15px;
+    white-space: nowrap;
+    line-height: 1.8;
+}
+
+/* --- Other Hero Link Sections --- */
+.page-section {
+    min-height: 80vh; 
+    padding: 80px 5%;
+    background-color: var(--text-light);
+    border-bottom: 1px solid var(--border-light);
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    font-size: 0.9em;
+}
+
+
+/* ==================================
+   MOBILE AND TABLET RESPONSIVENESS
+   ================================== */
+
+/* --- Mobile Menu Backdrop (Invisible) --- */
+.mobile-menu-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent; /* No darkness */
+    z-index: 1003; 
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.mobile-menu-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* --- Premium Slide-in Menu --- */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 15px 3%;
+    }
+    
+    .nav-links {
+        display: block; 
+        position: fixed;
+        top: 0;
+        left: 0; 
+        width: 50%; 
+        max-width: 300px; 
+        height: 100vh; 
+        background-color: var(--text-light);
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.15);
+        z-index: 1004; 
+        padding: 20px;
+        transform: translateX(-100%); 
+        transition: transform 0.4s ease-in-out;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    
+    .nav-links.active {
+        transform: translateX(0); 
+    }
+
+    .nav-close-btn-container {
+        display: flex;
+        justify-content: flex-start; 
+        margin-bottom: 20px;
+    }
+    .nav-close-btn {
+        background: none;
+        border: none;
+        font-size: 1.8em;
+        color: var(--text-dark);
+        cursor: pointer;
+    }
+
+    .nav-links li {
+        margin: 0;
+        width: 100%;
+    }
+    .nav-links a {
+        display: block;
+        padding: 15px 10px;
+        text-align: left;
+        font-size: 1.2em;
+        border-bottom: 1px solid var(--border-light);
+    }
+    /* This "glow" is now controlled by JS */
+    .nav-links a:hover,
+    .nav-links a.active {
+        background-color: #f0fdf9; 
+        color: var(--primary-color);
+    }
+
+    .menu-toggle {
+        display: block; 
+    }
+
+    .contact-btn {
+        display: none; 
+    }
+
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        margin-bottom: 40px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2em;
+    }
+
+    .consultation-form-container {
+        width: 80%;
+        max-width: 450px;
+    }
+
+    .curved-arrow {
+        display: none;
+    }
+    
+    .bottom-section {
+        padding: 80px 3%; 
+    }
+    .bottom-section h2 {
+        font-size: 1.8em;
+    }
+
+    .services-list {
+        gap: 10px;
+    }
+
+    .services-list span {
+        font-size: 1.1em;
+    }
+}
+
+/* Mobile Layout */
+@media (max-width: 600px) {
+    .navbar {
+        padding: 10px 3%;
+    }
+
+    .logo img {
+        height: 30px;
+    }
+
+    .nav-links {
+        width: 70%; 
+    }
+
+    .hero-section {
+        padding: 40px 3%;
+    }
+
+    .consultation-form-container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8em;
+    }
+
+    .hero-content p {
+        font-size: 1.2em;
+    }
+
+    .bottom-section {
+        padding: 60px 3%;
+    }
+
+    .bottom-section h2 {
+        font-size: 1.5em;
+    }
+
+    .bottom-section .highlight-text-orange::after {
+        height: 2px;
+    }
+}
+/* --- Fix for Mobile View Phone Button (Shows Full Number) --- */
+
+@media (max-width: 1024px) {
+    
+    .navbar {
+        display: flex;
+        align-items: center;
+        /* Make padding smaller to fit more */
+        padding: 15px 3%; 
+    }
+
+    .logo {
+        margin-right: auto; /* Pushes number and menu to the right */
+        flex-shrink: 0; /* Prevents logo from shrinking */
+    }
+
+    /* THIS IS THE FIX: 
+       This makes the contact button visible again */
+    .contact-btn {
+        display: block;
+        /* Add a small margin between button and hamburger */
+        margin-right: 1px; 
+    }
+
+    /* This styles the button to be smaller */
+    .contact-btn .phone-number {
+        /* Make padding smaller */
+        padding: 8px 10px; 
+        /* Make font smaller */
+        font-size: 0.75em; /* Was 1em on desktop */
+        /* Ensure it doesn't wrap */
+        white-space: nowrap; 
+    }
+
+    .contact-btn .phone-number i {
+        /* Make icon smaller to match font */
+        font-size: 1.1em; 
+        margin-right: 10px; /* Keep space between icon and number */
+    }
+
+    /* This just adds a little space */
+    .menu-toggle {
+        margin-left: 15px; 
+        flex-shrink: 0; /* Prevent hamburger from shrinking */
+    }
+}
+
+/* Fallback for VERY small phones (like iPhone SE) */
+@media (max-width: 200px) {
+    .contact-btn .phone-number {
+        /* On tiny screens, we must hide the text */
+        padding: 10px 12px; 
+        font-size: 0; 
+    }
+
+    .contact-btn .phone-number i {
+        font-size: 1.2em;
+        margin: 0;
+    }
+}
+/* ==================================
+   NEW 6-BOX SERVICE GRID STYLES
+   (This code is corrected and replaces the previous version)
+   ================================== */
+
+.services-grid-container {
+    display: grid;
+    /* - Default (Mobile): 2 columns
+      - Desktop (1024px+): 3 columns
+    */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; /* Gap for mobile */
+}
+@media (min-width: 1024px) {
+    .services-grid-container {
+        /* 3 columns on desktop */
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px; /* Wider gap for desktop */
+    }
+}
+
+/* ==================================
+   NEW 6-BOX SERVICE GRID STYLES
+   (This is the corrected version for the 2-link structure)
+   ================================== */
+
+.services-grid-container {
+    display: grid;
+    /* 2 columns on mobile */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; 
+}
+@media (min-width: 1024px) {
+    .services-grid-container {
+        /* 3 columns on desktop */
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px; 
+    }
+}
+
+/* NEW: This is the wrapper for the card + button */
+.service-card-wrapper {
+    background-color: #ffffff;
+    border-radius: 15px; /* The radius is now on the wrapper */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+    overflow: hidden; /* This makes the "glued" look work */
+    display: flex;
+    flex-direction: column; 
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-light);
+}
+
+/* HOVER: The whole wrapper lifts on hover */
+.service-card-wrapper:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* This is the top <a> tag (the main link) */
+.service-box {
+    display: block;
+    text-decoration: none; /* Removes link underline */
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+}
+
+.service-box-img {
+    width: 100%;
+    height: 200px; 
+    object-fit: cover; 
+}
+
+.service-box-content {
+    padding: 25px;
+    flex-grow: 1; 
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.service-icon {
+    font-size: 1.8em;
+    color: var(--primary-color);
+    transition: transform 0.4s ease-in-out;
+}
+
+/* HOVER: Icon rotates when you hover the main link */
+.service-box:hover .service-icon {
+    transform: rotate(360deg);
+}
+
+.service-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--text-dark);
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.service-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s ease;
+}
+
+/* HOVER: Underline draws when you hover the main link */
+.service-box:hover .service-title::after {
+    transform: scaleX(1);
+}
+
+.service-box-content p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #555;
+    flex-grow: 1;
+    margin-bottom: 20px; 
+}
+
+/* This is the bottom <a> tag (the button) */
+.service-button {
+    display: block;
+    width: 100%;
+    padding: 15px 25px;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+    /* This makes it look "glued" to the box above it */
+    border-radius: 0; 
+}
+
+.service-button:hover {
+    background-color: var(--secondary-color);
+}
+
+/* ==================================
+   MOBILE FIXES for 6-BOX GRID
+   ================================== */
+@media (max-width: 600px) {
+    .services-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px; 
+    }
+
+    .service-box-img {
+        height: 120px; 
+    }
+    .service-box-content {
+        padding: 20px 10px; 
+    }
+    
+    .service-title-row {
+        flex-direction: column; 
+        gap: 10px;
+        margin-bottom: 0; 
+    }
+    .service-icon {
+        font-size: 2em; 
+    }
+    .service-title {
+        font-size: 1.2em; 
+    }
+    
+    .service-box-content p {
+        display: none; /* Hide text on mobile */
+    }
+    
+    .service-button {
+        padding: 12px;
+        font-size: 1em;
+        margin-top: 20px; 
+    }
+}
+
+
+
+/*/* ==================================
+   CLIENT TESTIMONIAL SECTION STYLES
+   (FIXED: This code makes the 9:16 videos physically smaller)
+   ================================== */
+.clients-section {
+    background-color: var(--background-light); 
+}
+
+.clients-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 60px auto;
+}
+
+.clients-header h2 {
+    font-size: 2.8em;
+    font-weight: 900;
+    line-height: 1.3;
+    color: var(--text-dark);
+}
+
+.clients-header .highlight {
+    color: var(--primary-color);
+}
+
+.clients-header .subheadline {
+    font-size: 1.2em;
+    color: #555;
+    margin-top: 15px;
+}
+
+/* Zig-Zag Layout */
+.client-story-item {
+    display: grid;
+    grid-template-columns: 5fr 5fr;
+    gap: 120px;
+    align-items: center;
+    margin-bottom: 20px; 
+}
+
+/* Video Styles */
+.client-video-wrapper {
+    position: relative;
+    
+    /* --- THIS IS THE FIX --- */
+    /* 1. Force 9:16 Aspect Ratio on ALL screens */
+    padding-top: 62%; /* (16 / 9 * 100%) */
+    width: 100%;
+    
+    /* 2. Set a SMALL size for MOBILE (Mobile-First) */
+    max-width: 300px; 
+    /* --- END FIX --- */
+
+    margin: 0 auto;
+    background-color: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    
+}
+
+.client-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+     
+}
+
+/* Play Button Overlay */
+.play-button-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    font-size: 3em;
+    color: white;
+    transition: opacity 0.3s ease;
+    opacity: 1; 
+}
+
+.play-button-overlay i {
+    transform: scale(1);
+    transition: transform 0.2s ease;
+}
+
+.client-video-wrapper:hover .play-button-overlay i {
+    transform: scale(1.1);
+}
+
+.client-video-wrapper.is-playing .play-button-overlay {
+    opacity: 0; 
+}
+
+/* Text Content Styles */
+.client-text-content {
+    padding: 20px;
+}
+
+.client-text-content h3 {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.client-text-content p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #333;
+}
+
+/* Reverse Layout & DESKTOP SIZE */
+@media (min-width: 769px) {
+
+    /* --- DESKTOP SIZE FIX --- */
+    /* On PC, make the 9:16 video player NARROWER, which also makes it SHORTER */
+    .client-video-wrapper {
+        max-width: 200px; 
+    }
+    /* --- END DESKTOP FIX --- */
+
+    /* This aligns the smaller video correctly within its column */
+    .client-story-item .client-video-wrapper {
+        margin-left: auto;
+        margin-right: 0;
+    }
+    .client-story-item.reverse-layout .client-video-wrapper {
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    .client-story-item.reverse-layout .client-video-wrapper {
+        order: 2; 
+    }
+    .client-story-item.reverse-layout .client-text-content {
+        order: 1; 
+        text-align: right; 
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .client-story-item {
+        grid-template-columns: 1fr; 
+        gap: 20px;
+        margin-bottom: 10px; 
+    }
+    
+    .client-text-content {
+        text-align: center; 
+    }
+
+    .clients-header h2 {
+        font-size: 2.2em;
+    }
+
+    .client-text-content h3 {
+        font-size: 2.0em;
+    }
+
+    /* --- THIS IS THE FIX FOR 9:16 REEL ON MOBILE --- */
+    .client-video-wrapper {
+        margin: 0 auto;
+        /* This is your requested size */
+        max-width: 250px; 
+        /* This is the 9:16 ratio you want */
+        padding-top: 120%; 
+    }
+
+    .client-video {
+        /* This stops the video from stretching */
+        object-fit: cover;
+    }
+    /* --- END OF FIX --- */
+}
+
+
+/* ==================================
+   "HOW WE WORK" SECTION STYLES
+   (This is the corrected, cleaner version)
+   ================================== */
+.our-work-section {
+    background-color: var(--background-light);
+    padding-top: 30px; 
+}
+
+.our-work-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.our-work-header h2 {
+    font-size: 2.8em;
+    font-weight: 900;
+    color: var(--text-dark);
+}
+
+.how-we-work-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    position: relative; 
+    
+    /* This makes the whole 3-card group narrower on big screens */
+    max-width: 1100px;
+    margin: 0 auto; /* Centers the group */
+}
+
+/* REMOVED the horizontal dotted line for desktop.
+   This looks cleaner and matches your reference image.
+*/
+.how-we-work-container::before {
+    display: none;
+}
+
+/* The "Step" card */
+.work-step-card {
+    background-color: #ffffff;
+    border-radius: 15px; 
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+    border: 1px solid var(--border-light);
+    transition: all 0.3s ease;
+    z-index: 2; 
+}
+
+/* Hover effect for the card */
+.work-step-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* The icon circle (MADE SMALLER) */
+.work-step-icon {
+    width: 90px;
+    height: 90px;
+    line-height: 90px; /* Match width/height */
+    border-radius: 50%;
+    background-color: #ffffff;
+    margin: 0 auto;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 0 8px var(--background-light); /* Smaller "push" */
+    position: relative; 
+    transition: all 0.3s ease;
+}
+
+.work-step-icon i {
+    font-size: 2.2em; /* Made icon smaller */
+    color: var(--primary-color);
+}
+
+/* Icon hover effect */
+.work-step-card:hover .work-step-icon {
+    background-color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(0, 191, 130, 0.5); /* Green shadow */
+}
+
+.work-step-card:hover .work-step-icon i {
+    color: #ffffff;
+}
+
+.step-number {
+    display: block;
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--accent-dark-bg); /* Orange/Red color */
+    margin-top: 25px;
+}
+
+.step-title {
+    font-size: 1.4em; /* Made title smaller */
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.step-description p {
+    font-size: 0.95em; /* Made text smaller */
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Button at the bottom */
+.how-we-work-footer {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.request-callback-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.request-callback-btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 191, 130, 0.4);
+}
+
+/* ==================================
+   "HOW WE WORK" MOBILE RESPONSIVE
+   ================================== */
+@media (max-width: 768px) {
+    .our-work-header h2 {
+        font-size: 2.2em;
+    }
+
+    /* Stacks the 3 cards vertically */
+    .how-we-work-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* The dotted line for MOBILE (vertical) */
+    .how-we-work-container::before {
+        display: block; /* Show the line */
+        content: '';
+        position: absolute;
+        top: 45px; /* Aligns with middle of 90px icon */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 3px;
+        height: 95%; /* Full height of container */
+        background-image: linear-gradient(to bottom, var(--primary-color) 50%, transparent 50%);
+        background-size: 3px 20px;
+        background-repeat: repeat-y;
+        z-index: 1; /* Behind the cards */
+    }
+
+    .work-step-card {
+        padding: 20px;
+    }
+}
+
+
+/* ==================================
+   "INDUSTRIES" SECTION STYLES (MODIFIED)
+   ================================== */
+.industries-section {
+    background-color: var(--background-light); 
+    padding-top: 0; /* FIX: Removes top margin */
+}
+
+.industries-header {
+    text-align: center;
+    max-width: 800px; /* FIX: Wider for single line subheadline */
+    margin: 0 auto 50px auto;
+}
+
+.industries-header h2 {
+    font-size: 2.8em;
+    font-weight: 900;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+}
+
+.industries-header p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* FIX: Color for important words */
+.industries-header .highlight {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* The grid for all the boxes */
+.industries-grid {
+    display: grid;
+    /* FIX: 4-in-a-row grid for PC */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1100px; /* Max width of the whole grid */
+    margin: 0 auto; /* Center the grid */
+}
+
+/* The white box */
+.industry-box {
+    background-color: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: 12px; 
+    padding: 20px 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+/* FIX: "Green Fog" Hover effect */
+.industry-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 191, 130, 0.4);
+}
+
+/* The green circle for the icon */
+.industry-icon-wrapper {
+    flex-shrink: 0; 
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #f0fdf9; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s ease-in-out;
+}
+
+.industry-icon {
+    font-size: 1.5em;
+    color: var(--primary-color);
+}
+
+/* HOVER: 360-degree rotation */
+.industry-box:hover .industry-icon-wrapper {
+    transform: rotate(360deg);
+}
+
+.industry-name {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+/* Style for the "And Many More" box */
+.and-more-box {
+    background-color: #f9f9f9;
+}
+
+/* ADDED: Footer button styling */
+.industries-footer {
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* ==================================
+   "INDUSTRIES" MOBILE RESPONSIVE
+   ================================== */
+@media (max-width: 768px) {
+    .industries-header h2 {
+        font-size: 2.2em;
+    }
+
+    /* FIX: 2 columns on mobile */
+    .industries-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    /* On mobile, stack icon on top of text */
+    .industry-box {
+        flex-direction: column;
+        padding: 25px 15px;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .industry-name {
+        font-size: 1em;
+    }
+}
+
+/* ==================================
+   "ABOUT US" SECTION STYLES
+   (This is the corrected, larger-logo version)
+   ================================== */
+.about-us-section {
+    background-color: #ffffff; /* Clean white background */
+    padding-top: 30px; /* <-- FIX: Removes top margin */
+}
+
+.about-us-container {
+    display: grid;
+    /* 2 columns on PC */
+    grid-template-columns: 1fr 1.5fr; /* Logo column is a bit smaller */
+    align-items: center;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto; /* Center the container */
+}
+
+/* --- Left Column (Logo) --- */
+.about-us-logo-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.about-us-logo {
+    /* MODIFIED: Increased PC size */
+    width: 240px;
+    height: 240px;
+    border-radius: 50%; /* Makes it a circle */
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* "Green Fog" Hover Effect */
+.about-us-logo-block:hover .about-us-logo {
+    transform: translateY(-5px);
+    box-shadow: 0 50px 50px rgba(0, 191, 130, 0.4);
+}
+
+.about-us-brand-name {
+    font-size: 1.7em;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 0;
+}
+
+/* --- Right Column (Content) --- */
+.about-us-content-block h2 {
+    font-size: 2.8em;
+    font-weight: 900;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+/* This .highlight class rule already exists in your CSS 
+   and will make the "About Us" text green */
+.about-us-content-block .highlight {
+    color: var(--primary-color);
+}
+
+.about-us-content-block p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 15px; /* Space between paragraphs */
+}
+
+/* Button style (reusing from "How We Work") */
+.about-us-content-block .request-callback-btn {
+    margin-top: 20px;
+    display: inline-block; /* Button doesn't take full width */
+}
+
+/* ==================================
+   "ABOUT US" MOBILE RESPONSIVE
+   ================================== */
+@media (max-width: 768px) {
+    /* MODIFIED: Removed top margin on mobile */
+    .about-us-section {
+        padding-top: 40px; /* Was 80px */
+    }
+
+    /* Stacks to 1 column */
+    .about-us-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .about-us-logo {
+        /* MODIFIED: Increased mobile size */
+        width: 150px;
+        height: 150px;
+    }
+
+    /* Center text on mobile */
+    .about-us-content-block {
+        text-align: center;
+    }
+
+    .about-us-content-block h2 {
+        font-size: 1.2em;
+    }
+}
+
+
+
+/* ==================================
+   "FAQ" (ASKED US) SECTION STYLES
+   ================================== */
+.faq-section {
+    background-color: var(--background-light);
+}
+
+.faq-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.faq-header h2 {
+    font-size: 2.8em;
+    font-weight: 900;
+    color: var(--text-dark);
+    display: inline-block; /* Allows underline to fit content */
+    position: relative;
+    padding-bottom: 5px;
+}
+
+/* Orange underline for "Questions" */
+.faq-header .highlight-orange {
+    color: var(--accent-dark-bg);
+}
+
+.faq-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%; /* Starts from the end of "Frequently Asked" */
+    width: 50%; /* Covers "Questions" */
+    height: 3px;
+    background-color: var(--accent-dark-bg);
+    transform: translateX(-50%);
+}
+
+.faq-container {
+    max-width: 800px; /* Constrains width of the accordion */
+    margin: 0 auto;
+}
+
+.faq-item {
+    background-color: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden; /* CRITICAL for animation */
+    transition: all 0.3s ease;
+}
+
+/* The clickable question bar */
+.faq-question {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--text-dark);
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s ease;
+}
+
+.faq-icon {
+    font-size: 0.9em;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+/* The answer content box */
+.faq-answer-container {
+    /* This is the animation */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+
+.faq-answer {
+    padding: 0 25px 20px 25px;
+}
+
+.faq-answer p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* --- ACTIVE (OPEN) STATE --- */
+.faq-item.active {
+    border-color: var(--primary-color);
+}
+
+.faq-item.active .faq-question {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(180deg); /* Flips the arrow */
+    color: #ffffff;
+}
+
+.faq-item.active .faq-answer-container {
+    max-height: 300px; /* Animates open */
+}
+
+/* --- Footer --- */
+.faq-footer {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.faq-footer h3 {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+/* Reusing the same button style */
+.faq-footer .request-callback-btn {
+    display: inline-block;
+}
+
+/* --- Mobile Responsive --- */
+@media (max-width: 768px) {
+    .faq-header h2 {
+        font-size: 2.2em;
+    }
+    .faq-question {
+        font-size: 1em;
+        padding: 15px 20px;
+    }
+}
+
+/* ==================================
+   "FAQ" (ASKED US) FOOTER
+   (This has BOTH animations: Sunshine + Bounce)
+   ================================== */
+
+/* --- Footer --- */
+.faq-footer {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.faq-footer h3 {
+    font-size: 1.8em;
+    font-weight: 900;
+    margin-bottom: 25px;
+    
+    /* --- SUNSHINE EFFECT --- */
+    
+    /* 1. Set the gradient background */
+    background: linear-gradient(
+        to right, 
+        var(--accent-dark-bg) 30%, 
+        #ffe4a1 50%, /* A bright "sunshine" color */
+        var(--accent-dark-bg) 70%
+    );
+    background-size: 200% auto; 
+    
+    /* 2. Clip the background to the text */
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+    /* 3. Make the text color transparent */
+    color: transparent;
+    
+    /* --- COMBINED ANIMATIONS --- */
+    /* 4. Apply BOTH animations */
+    /* animation: [animation-name] [duration] [timing] [repetition] */
+    animation: 
+        sunshine-effect 2s linear infinite,
+        bounce-up-down 1.5s ease-in-out infinite;
+}
+
+/* Reusing the same button style */
+.faq-footer .request-callback-btn {
+    display: inline-block;
+}
+
+/* --- KEYFRAMES FOR ANIMATIONS --- */
+
+/* Keyframes for the sunshine effect */
+@keyframes sunshine-effect {
+  0% {
+    background-position: 200% center; /* Start from far right */
+  }
+  100% {
+    background-position: -200% center; /* Move to far left */
+  }
+}
+
+/* Keyframes for the bounce effect */
+@keyframes bounce-up-down {
+  0%, 100% {
+    transform: translateY(0); /* Start and end at normal position */
+  }
+  50% {
+    transform: translateY(-8px); /* Moves it 8px up */
+  }
+}
+
+/* ==================================
+   FOOTER SECTION STYLES (FIXED)
+   ================================== */
+.site-footer {
+    /* "Ash" background color */
+    background-color: #e9ecef; 
+    padding: 60px 5% 0 5%;
+    border-top: 1px solid #dee2e6; 
+}
+
+.footer-container {
+    display: grid;
+    /* 3 columns on PC */
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto 40px auto;
+}
+
+/* --- Column 1: Logo & Socials --- */
+.footer-col-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligns items to the left on PC */
+}
+.footer-logo {
+    height: 60px; 
+    margin-bottom: 20px;
+}
+.footer-address {
+    font-size: 1.05em;
+    line-height: 1.8;
+    color: #555;
+    max-width: 275px; 
+}
+.footer-social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+.footer-social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: var(--accent-dark-bg);
+    border: 1px solid var(--accent-dark-bg);
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+}
+.footer-social-links a:hover {
+    background-color: var(--accent-dark-bg);
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+/* --- Column 2: Quick Links --- */
+.footer-title {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+.footer-quick-links {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 20px;
+}
+.footer-quick-links a {
+    text-decoration: none;
+    color: #555;
+    font-size: 1.05em;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+.footer-quick-links a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Column 3: Contact --- */
+.footer-col-3 {
+    display: flex; /* Changed from grid */
+    flex-direction: column; /* Stacks Phone and Email */
+    gap: 0;
+}
+.footer-contact-group {
+    margin-bottom: 20px;
+}
+.footer-contact-link {
+    display: block;
+    text-decoration: none;
+    color: #555;
+    font-size: 1.05em;
+    font-weight: 500;
+    /* FIX: Reduced gap between emails */
+    margin-bottom: 4px; 
+    transition: color 0.3s ease;
+}
+.footer-contact-link:hover {
+    color: var(--primary-color);
+}
+
+/* --- Copyright Bar --- */
+.footer-bottom-bar {
+    text-align: center;
+    padding: 25px 0;
+    /* FIX: "Dark black" line */
+    border-top: 1px solid #333333; 
+}
+.footer-bottom-bar p {
+    color: #777;
+    font-size: 1em; 
+}
+
+/* ==================================
+   FOOTER MOBILE RESPONSIVE
+   (NEW, CLEANER DESIGN)
+   ================================== */
+@media (max-width: 768px) {
+    .site-footer {
+        padding-top: 40px;
+    }
+    
+    .footer-container {
+        grid-template-columns: 1fr; /* 1 column for all */
+        gap: 40px;
+    }
+
+    /* Center-align all columns on mobile */
+    .footer-col-1,
+    .footer-col-2,
+    .footer-col-3 {
+        text-align: center;
+    }
+    
+    /* FIX: This centers the logo, text, and icons */
+    .footer-col-1 {
+        align-items: center; 
+    }
+    
+    .footer-social-links {
+        justify-content: center;
+    }
+
+    .footer-quick-links {
+        text-align: center;
+    }
+
+    /* FIX: Stacks Phone and Email in 1 column */
+    .footer-col-3 {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        text-align: center; /* Center-aligns the new stack */
+        padding: 0 10px; 
+    }
+    .footer-contact-group {
+        margin-bottom: 0;
+    }
+    .footer-title {
+        font-size: 1.3em;
+    }
+}
+
+/* ==================================
+   FLOATING ACTION BUTTONS (FAB) STYLES
+   (MODIFIED with new "Pulse" animation)
+   ================================== */
+.fab-container {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column; /* Stacks them vertically */
+    gap: 15px; /* Space between buttons */
+}
+
+.fab-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-color); 
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 1.8em; /* Icon size */
+    text-decoration: none;
+    /* Base shadow */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    
+    /* MODIFIED: Added a second animation for pulsing */
+    animation: 
+        fab-bob 2.5s ease-in-out infinite,
+        fab-pulse 2.5s ease-in-out infinite; /* <-- NEW PULSE ANIMATION */
+}
+
+.fab-icon:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.1); /* Lifts on hover */
+    animation-play-state: paused; /* Stops BOTH animations on hover */
+}
+
+/* Stagger the animation so they don't move together */
+.fab-whatsapp {
+    animation-delay: 0.2s;
+}
+.fab-phone {
+    animation-delay: 0.4s;
+}
+
+/* The "drop down" (bobbing) animation */
+@keyframes fab-bob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px); /* Moves 8px up */
+  }
+}
+
+/* NEW: Keyframes for the "pulse" animation */
+@keyframes fab-pulse {
+  0% {
+    /* The "fog" shadow at the start (same as base shadow) */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2),
+                0 0 0 0 rgba(0, 191, 130, 0.7);
+  }
+  70% {
+    /* The fog expands to 15px and fades out */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2),
+                0 0 0 15px rgba(0, 191, 130, 0);
+  }
+  100% {
+    /* Returns to start */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2),
+                0 0 0 0 rgba(0, 191, 130, 0);
+  }
+}
+
+/* ==================================
+   FAB MOBILE RESPONSIVE FIX
+   ================================== */
+
+@media (max-width: 768px) {
+    .fab-container {
+        bottom: 15px;
+        right: 15px;
+        gap: 10px; 
+    }
+
+    .fab-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5em; 
+    }
+}
+
+/* ==================================
+   AI CHATBOT (FAB) STYLES
+   ================================== */
+/* New Robot Button */
+.fab-robot {
+    background-color: var(--accent-dark-bg); /* Orange color */
+    border: none;
+    cursor: pointer;
+    animation-delay: 0s; /* Make it pulse first */
+}
+.fab-robot:hover {
+    background-color: #c95a3d; /* Darker orange */
+}
+
+/* Modal Backdrop (for blur) */
+.chat-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    /* Background Blur Effect */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.chat-modal-backdrop:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+}
+.hidden {
+    display: none;
+}
+
+/* Chat Modal Window */
+.chat-modal {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 90%;
+    max-width: 400px;
+    height: 600px;
+    max-height: 80vh;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* Animation */
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease-out;
+}
+.chat-modal-backdrop:not(.hidden) .chat-modal {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Chat Header */
+.chat-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: var(--primary-color);
+    color: white;
+}
+.chat-modal-header h3 {
+    font-size: 1.2em;
+    font-weight: 700;
+}
+.chat-modal-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2em;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.8;
+}
+.chat-modal-close:hover {
+    opacity: 1;
+}
+
+/* Chat Messages */
+.chat-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.chat-bubble {
+    padding: 12px 18px;
+    border-radius: 20px;
+    max-width: 80%;
+    line-height: 1.5;
+}
+/* AI Bubble */
+.chat-bubble.ai {
+    background-color: #f1f1f1;
+    color: #333;
+    border-bottom-left-radius: 4px;
+    align-self: flex-start;
+}
+/* User Bubble */
+.chat-bubble.user {
+    background-color: var(--primary-color);
+    color: white;
+    border-bottom-right-radius: 4px;
+    align-self: flex-end;
+}
+/* AI "Thinking..." Bubble */
+.chat-bubble.typing {
+    background-color: #f1f1f1;
+    color: #888;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    font-style: italic;
+}
+
+/* Chat Input Form */
+.chat-form {
+    display: flex;
+    border-top: 1px solid var(--border-light);
+    padding: 10px;
+}
+#chat-input {
+    flex-grow: 1;
+    border: none;
+    padding: 12px;
+    font-size: 1em;
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+#chat-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-color-light);
+}
+#chat-submit-btn {
+    background-color: var(--primary-color);
+    border: none;
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#chat-submit-btn:hover {
+    background-color: var(--secondary-color);
+}
+#chat-submit-btn:disabled {
+    background-color: #ccc;
+}
+
+/* Mobile styles for chat */
+@media (max-width: 768px) {
+    .chat-modal {
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        max-height: 100%;
+        border-radius: 0;
+    }
+}
