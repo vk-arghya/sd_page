@@ -211,14 +211,14 @@ document.addEventListener('DOMContentLoaded', () => {
         setSubmitting(true);
         const emailSubject = "New Consultation Request from Shark Velocity";
         const emailBody = `
-Hello Dear,
+Hey [Company Name],
 We have received a new client consultation request:
 Name: ${data.user_name}
 Email: ${data.user_email}
 Phone Number: ${data.user_phone}
 Message: ${data.user_message || 'N/A'}
 Thank You
-Pioneering Marketing
+Shark Velocity Website
         `;
         const templateParams = {
             to_email: YOUR_CLIENT_EMAIL,
@@ -344,7 +344,7 @@ Pioneering Marketing
     }
 
     // ==================================
-    // 7. INDUSTRY BOX CLICK/HOVER ANIMATION (NEW LOGIC)
+    // 7. INDUSTRY BOX CLICK/HOVER ANIMATION (FINAL LOGIC)
     // ==================================
     const industryBoxes = document.querySelectorAll('.industry-box');
 
@@ -354,42 +354,29 @@ Pioneering Marketing
 
         // This will track the *target* rotation in degrees
         let targetRotation = 0;
-        // This tracks if the box has been "activated" by a click or first hover
-        let isActivated = false;
 
-        // --- PC HOVER ---
+        // --- PC HOVER (CUMULATIVE) ---
         box.addEventListener('mouseenter', () => {
-            // If it hasn't been activated yet, spin it
-            if (!isActivated) {
-                isActivated = true; // Mark as activated
-                targetRotation = 360; // Set target
-                iconWrapper.style.transform = `rotate(${targetRotation}deg)`;
-            }
+            // Add 360 to the current rotation every time
+            targetRotation += 360;
+            // Apply the new, cumulative rotation
+            iconWrapper.style.transform = `rotate(${targetRotation}deg)`;
         });
 
         // --- MOUSELEAVE ---
         // Per your request, this does nothing. The icon stays spun.
-        // box.addEventListener('mouseleave', () => {});
-
-
-        // --- CLICK HANDLER (for both PC click and Mobile tap) ---
-        const handleClick = () => {
-            isActivated = true; // Mark as activated
-            // Add 360 to the *current* target rotation
+        box.addEventListener('mouseleave', () => {
+            // We do nothing here, so it stays in its position
+        });
+        
+        // --- MOBILE TAP ---
+        // We still need this for mobile users
+        box.addEventListener('touchstart', (e) => {
+            e.preventDefault(); 
+            // Add 360 to the current rotation every time
             targetRotation += 360;
             // Apply the new, cumulative rotation
             iconWrapper.style.transform = `rotate(${targetRotation}deg)`;
-        };
-
-        // --- PC CLICK ---
-        box.addEventListener('click', handleClick);
-        
-        // --- MOBILE TAP ---
-        // We add preventDefault to stop 'click' from firing right after 'touchstart'
-        // which would cause a double spin on mobile.
-        box.addEventListener('touchstart', (e) => {
-            e.preventDefault(); 
-            handleClick();
         }, { passive: false });
     });
 
