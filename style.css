@@ -34,9 +34,17 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 1000; /* Default z-index */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: z-index 0.5s; 
 }
+
+/* THIS IS THE NEW RULE THAT FIXES THE BUG */
+.header-container.menu-is-open {
+    /* This z-index is higher than the backdrop (1003) */
+    z-index: 1005; 
+}
+
 /* --- Consultation Form Wrapper and Hover Effect --- */
 .consultation-wrapper {
     position: relative;
@@ -389,8 +397,8 @@ body {
 }
 
 /* ==================================
-   MOBILE VIEW FIX for Services List
-   ================================== */
+    MOBILE VIEW FIX for Services List
+    ================================== */
 
 @media (max-width: 768px) { 
     /* Selects the services list inside the dark blue section */
@@ -485,17 +493,20 @@ footer {
 
 
 /* ==================================
-   MOBILE AND TABLET RESPONSIVENESS
-   ================================== */
+    MOBILE AND TABLET RESPONSIVENESS
+    ================================== */
 
-/* --- Mobile Menu Backdrop (Invisible) --- */
+/* ==================================
+   BACKDROP (BLUR REMOVED)
+   ================================== */
 .mobile-menu-backdrop {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: transparent; /* No darkness */
+    /* MODIFIED: Removed blur, kept dark overlay */
+    background-color: rgba(0, 0, 0, 0.3);
     z-index: 1003; 
     opacity: 0;
     visibility: hidden;
@@ -508,11 +519,15 @@ footer {
 }
 
 
-/* --- Premium Slide-in Menu --- */
+/* --- Original Slide-in Menu (Restored) --- */
 @media (max-width: 1024px) {
     .navbar {
         padding: 15px 3%;
     }
+    
+    /* ==================================
+       ORIGINAL SLIDE-IN MENU (RESTORED)
+       ================================== */
     
     .nav-links {
         display: block; 
@@ -524,7 +539,7 @@ footer {
         height: 100vh; 
         background-color: var(--text-light);
         box-shadow: 5px 0 15px rgba(0, 0, 0, 0.15);
-        z-index: 1004; 
+        z-index: 1004; /* This is fine, as its parent's z-index is boosted */
         padding: 20px;
         transform: translateX(-100%); 
         transition: transform 0.4s ease-in-out;
@@ -559,18 +574,28 @@ footer {
         text-align: left;
         font-size: 1.2em;
         border-bottom: 1px solid var(--border-light);
+        color: var(--text-dark); /* Ensure text is dark on light menu */
+        position: relative;
     }
-    /* This "glow" is now controlled by JS */
+    
+    /* Remove any premium menu hover effects */
+    .nav-links a::after {
+        display: none;
+    }
+
     .nav-links a:hover,
     .nav-links a.active {
         background-color: #f0fdf9; 
         color: var(--primary-color);
     }
-
+    
     .menu-toggle {
         display: block; 
     }
+    /* --- End of Restored Menu --- */
 
+
+    /* Keep this rule from your old CSS */
     .contact-btn {
         display: none; 
     }
@@ -624,8 +649,9 @@ footer {
         height: 30px;
     }
 
+    /* This rule is now redundant, but harmless */
     .nav-links {
-        width: 70%; 
+        width: 70%; /* Changed from 100% back to original */
     }
 
     .hero-section {
@@ -674,7 +700,7 @@ footer {
     }
 
     /* THIS IS THE FIX: 
-       This makes the contact button visible again */
+        This makes the contact button visible again */
     .contact-btn {
         display: block;
         /* Add a small margin between button and hamburger */
@@ -718,14 +744,14 @@ footer {
     }
 }
 /* ==================================
-   NEW 6-BOX SERVICE GRID STYLES
-   (This code is corrected and replaces the previous version)
-   ================================== */
+    NEW 6-BOX SERVICE GRID STYLES
+    (This code is corrected and replaces the previous version)
+    ================================== */
 
 .services-grid-container {
     display: grid;
     /* - Default (Mobile): 2 columns
-      - Desktop (1024px+): 3 columns
+       - Desktop (1024px+): 3 columns
     */
     grid-template-columns: repeat(2, 1fr);
     gap: 20px; /* Gap for mobile */
@@ -739,9 +765,9 @@ footer {
 }
 
 /* ==================================
-   NEW 6-BOX SERVICE GRID STYLES
-   (This is the corrected version for the 2-link structure)
-   ================================== */
+    NEW 6-BOX SERVICE GRID STYLES
+    (This is the corrected version for the 2-link structure)
+    ================================== */
 
 .services-grid-container {
     display: grid;
@@ -872,8 +898,8 @@ footer {
 }
 
 /* ==================================
-   MOBILE FIXES for 6-BOX GRID
-   ================================== */
+    MOBILE FIXES for 6-BOX GRID
+    ================================== */
 @media (max-width: 600px) {
     .services-grid-container {
         grid-template-columns: repeat(2, 1fr);
@@ -913,9 +939,9 @@ footer {
 
 
 /*/* ==================================
-   CLIENT TESTIMONIAL SECTION STYLES
-   (FIXED: This code makes the 9:16 videos physically smaller)
-   ================================== */
+    CLIENT TESTIMONIAL SECTION STYLES
+    (FIXED: This code makes the 9:16 videos physically smaller)
+    ================================== */
 .clients-section {
     background-color: var(--background-light); 
 }
@@ -979,7 +1005,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-     
+    
 }
 
 /* Play Button Overlay */
@@ -1097,9 +1123,9 @@ footer {
 
 
 /* ==================================
-   "HOW WE WORK" SECTION STYLES
-   (This is the corrected, cleaner version)
-   ================================== */
+    "HOW WE WORK" SECTION STYLES
+    (This is the corrected, cleaner version)
+    ================================== */
 .our-work-section {
     background-color: var(--background-light);
     padding-top: 30px; 
@@ -1128,7 +1154,7 @@ footer {
 }
 
 /* REMOVED the horizontal dotted line for desktop.
-   This looks cleaner and matches your reference image.
+    This looks cleaner and matches your reference image.
 */
 .how-we-work-container::before {
     display: none;
@@ -1229,8 +1255,8 @@ footer {
 }
 
 /* ==================================
-   "HOW WE WORK" MOBILE RESPONSIVE
-   ================================== */
+    "HOW WE WORK" MOBILE RESPONSIVE
+    ================================== */
 @media (max-width: 768px) {
     .our-work-header h2 {
         font-size: 2.2em;
@@ -1264,8 +1290,8 @@ footer {
 
 
 /* ==================================
-   "INDUSTRIES" SECTION STYLES (MODIFIED)
-   ================================== */
+    "INDUSTRIES" SECTION STYLES (MODIFIED)
+    ================================== */
 .industries-section {
     background-color: var(--background-light); 
     padding-top: 0; /* FIX: Removes top margin */
@@ -1343,10 +1369,7 @@ footer {
     color: var(--primary-color);
 }
 
-/* HOVER: 360-degree rotation */
-.industry-box:hover .industry-icon-wrapper {
-    transform: rotate(360deg);
-}
+/* New animation rule for the click/tap spin */
 
 .industry-name {
     font-size: 1.1em;
@@ -1366,8 +1389,8 @@ footer {
 }
 
 /* ==================================
-   "INDUSTRIES" MOBILE RESPONSIVE
-   ================================== */
+    "INDUSTRIES" MOBILE RESPONSIVE
+    ================================== */
 @media (max-width: 768px) {
     .industries-header h2 {
         font-size: 2.2em;
@@ -1393,9 +1416,9 @@ footer {
 }
 
 /* ==================================
-   "ABOUT US" SECTION STYLES
-   (This is the corrected, larger-logo version)
-   ================================== */
+    "ABOUT US" SECTION STYLES
+    (This is the corrected, larger-logo version)
+    ================================== */
 .about-us-section {
     background-color: #ffffff; /* Clean white background */
     padding-top: 30px; /* <-- FIX: Removes top margin */
@@ -1452,7 +1475,7 @@ footer {
 }
 
 /* This .highlight class rule already exists in your CSS 
-   and will make the "About Us" text green */
+    and will make the "About Us" text green */
 .about-us-content-block .highlight {
     color: var(--primary-color);
 }
@@ -1471,8 +1494,8 @@ footer {
 }
 
 /* ==================================
-   "ABOUT US" MOBILE RESPONSIVE
-   ================================== */
+    "ABOUT US" MOBILE RESPONSIVE
+    ================================== */
 @media (max-width: 768px) {
     /* MODIFIED: Removed top margin on mobile */
     .about-us-section {
@@ -1504,8 +1527,8 @@ footer {
 
 
 /* ==================================
-   "FAQ" (ASKED US) SECTION STYLES
-   ================================== */
+    "FAQ" (ASKED US) SECTION STYLES
+    ================================== */
 .faq-section {
     background-color: var(--background-light);
 }
@@ -1646,9 +1669,9 @@ footer {
 }
 
 /* ==================================
-   "FAQ" (ASKED US) FOOTER
-   (This has BOTH animations: Sunshine + Bounce)
-   ================================== */
+    "FAQ" (ASKED US) FOOTER
+    (This has BOTH animations: Sunshine + Bounce)
+    ================================== */
 
 /* --- Footer --- */
 .faq-footer {
@@ -1696,27 +1719,27 @@ footer {
 
 /* Keyframes for the sunshine effect */
 @keyframes sunshine-effect {
-  0% {
+    0% {
     background-position: 200% center; /* Start from far right */
-  }
-  100% {
+    }
+    100% {
     background-position: -200% center; /* Move to far left */
-  }
+    }
 }
 
 /* Keyframes for the bounce effect */
 @keyframes bounce-up-down {
-  0%, 100% {
+    0%, 100% {
     transform: translateY(0); /* Start and end at normal position */
-  }
-  50% {
+    }
+    50% {
     transform: translateY(-8px); /* Moves it 8px up */
-  }
+    }
 }
 
 /* ==================================
-   FOOTER SECTION STYLES (FIXED)
-   ================================== */
+    FOOTER SECTION STYLES (FIXED)
+    ================================== */
 .site-footer {
     /* "Ash" background color */
     background-color: #e9ecef; 
@@ -1833,9 +1856,9 @@ footer {
 }
 
 /* ==================================
-   FOOTER MOBILE RESPONSIVE
-   (NEW, CLEANER DESIGN)
-   ================================== */
+    FOOTER MOBILE RESPONSIVE
+    (NEW, CLEANER DESIGN)
+    ================================== */
 @media (max-width: 768px) {
     .site-footer {
         padding-top: 40px;
@@ -1883,9 +1906,9 @@ footer {
 }
 
 /* ==================================
-   FLOATING ACTION BUTTONS (FAB) STYLES
-   (MODIFIED with new "Pulse" animation)
-   ================================== */
+    FLOATING ACTION BUTTONS (FAB) STYLES
+    (MODIFIED with new "Pulse" animation)
+    ================================== */
 .fab-container {
     position: fixed;
     bottom: 25px;
@@ -1932,36 +1955,36 @@ footer {
 
 /* The "drop down" (bobbing) animation */
 @keyframes fab-bob {
-  0%, 100% {
+    0%, 100% {
     transform: translateY(0);
-  }
-  50% {
+    }
+    50% {
     transform: translateY(-8px); /* Moves 8px up */
-  }
+    }
 }
 
 /* NEW: Keyframes for the "pulse" animation */
 @keyframes fab-pulse {
-  0% {
+    0% {
     /* The "fog" shadow at the start (same as base shadow) */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2),
                 0 0 0 0 rgba(0, 191, 130, 0.7);
-  }
-  70% {
+    }
+    70% {
     /* The fog expands to 15px and fades out */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2),
                 0 0 0 15px rgba(0, 191, 130, 0);
-  }
-  100% {
+    }
+    100% {
     /* Returns to start */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2),
                 0 0 0 0 rgba(0, 191, 130, 0);
-  }
+    }
 }
 
 /* ==================================
-   FAB MOBILE RESPONSIVE FIX
-   ================================== */
+    FAB MOBILE RESPONSIVE FIX
+    ================================== */
 
 @media (max-width: 768px) {
     .fab-container {
@@ -1978,8 +2001,8 @@ footer {
 }
 
 /* ==================================
-   AI CHATBOT (FAB) STYLES
-   ================================== */
+    AI CHATBOT (FAB) STYLES
+    ================================== */
 /* New Robot Button */
 .fab-robot {
     background-color: var(--accent-dark-bg); /* Orange color */
@@ -2000,8 +2023,8 @@ footer {
     height: 100%;
     z-index: 2000;
     /* Background Blur Effect */
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    /* backdrop-filter: blur(5px); */ /* REMOVED */
+    /* -webkit-backdrop-filter: blur(5px); */ /* REMOVED */
     background-color: rgba(0, 0, 0, 0.3);
     opacity: 0;
     visibility: hidden;
